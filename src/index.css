@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root[data-theme="dark"] {
+  --bg-primary:   #080810;
+  --bg-secondary: #0E0E1A;
+  --bg-tertiary:  #0A0A12;
+  --bg-hover:     #13131F;
+  --bg-card:      #1E1E30;
+  --border:       #1E1E30;
+  --border-soft:  #16162A;
+  --text-primary: #F0F0FF;
+  --text-secondary:#8888AA;
+  --text-muted:   #5A5A7A;
+  --text-faint:   #3A3A5A;
+  --gold:         #00F5A0;
+  --gold-dark:    #00C87A;
+  --gold-bg:      #00F5A010;
+  --gold-border:  #00F5A030;
+}
+
+:root[data-theme="light"] {
+  --bg-primary:   #F0F5F2;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary:  #F8FBF9;
+  --bg-hover:     #E8F5EF;
+  --bg-card:      #E0EDE8;
+  --border:       #D0E5DA;
+  --border-soft:  #E0EDE8;
+  --text-primary: #0A1A12;
+  --text-secondary:#3A5A48;
+  --text-muted:   #6A8A78;
+  --text-faint:   #9ABAA8;
+  --gold:         #00A868;
+  --gold-dark:    #008A55;
+  --gold-bg:      #00A86815;
+  --gold-border:  #00A86830;
+}
+
+* { font-family: 'Space Grotesk', sans-serif; }
+
+.t-card   { background: var(--bg-secondary); border: 0.5px solid var(--border); }
+.t-inner  { background: var(--bg-tertiary);  border: 0.5px solid var(--border-soft); }
+.t-text   { color: var(--text-primary); }
+.t-muted  { color: var(--text-muted); }
+.t-faint  { color: var(--text-faint); }
+.t-border { border-color: var(--border); }
+.t-border-soft { border-color: var(--border-soft); }
+.t-hover:hover { background: var(--bg-hover); }
+.t-input  {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border);
+  color: var(--text-primary);
+}
+.t-input:focus { border-color: var(--gold); outline: none; }
+.t-input::placeholder { color: var(--text-faint); }
+.t-select {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border);
+  color: var(--text-primary);
+}
+.t-select:focus { border-color: var(--gold); outline: none; }
+.t-row { border-bottom: 0.5px solid var(--border-soft); }
+.t-th { color: var(--text-faint); }
+.t-modal {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+}
+.t-btn-primary {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+}
+.t-btn-primary:hover { background: var(--gold-dark); }
+
+/* Tags de status */
+.tag-confirmed   { background: #00F5A015; color: #00F5A0; border: 0.5px solid #00F5A030; }
+.tag-in-progress { background: #00D9F515; color: #00D9F5; border: 0.5px solid #00D9F530; }
+.tag-pending     { background: #B8A8FF15; color: #B8A8FF; border: 0.5px solid #B8A8FF30; }
+.tag-cancelled   { background: #FF3D6E15; color: #FF3D6E; border: 0.5px solid #FF3D6E30; }
+.tag-completed   { background: #5A5A7A15; color: #5A5A7A; border: 0.5px solid #5A5A7A30; }
+.tag-vip         { background: #00D9F515; color: #00D9F5; border: 0.5px solid #00D9F530; }
+.tag-regular     { background: #00F5A015; color: #00F5A0; border: 0.5px solid #00F5A030; }
+.tag-novo        { background: #B8A8FF15; color: #B8A8FF; border: 0.5px solid #B8A8FF30; }
+
+/* Sidebar lg */
+@media (min-width: 1024px) {
+  aside {
+    position: relative !important;
+    transform: translateX(0) !important;
+  }
+}
