@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("barberos-token");
+    const token = localStorage.getItem("trovare-beauty-token");
     if (token) {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       api.get("/auth/me")
@@ -21,15 +21,19 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function login(email, password) {
-    const { data } = await api.post("/auth/login", { email, password });
-    localStorage.setItem("barberos-token", data.token);
+    const { data } = await api.post("/auth/login", {
+      email,
+      password,
+      product: "beauty",
+    });
+    localStorage.setItem("trovare-beauty-token", data.token);
     api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
     setUser(data.user);
     return data;
   }
 
   function logout() {
-    localStorage.removeItem("barberos-token");
+    localStorage.removeItem("trovare-beauty-token");
     delete api.defaults.headers.common["Authorization"];
     setUser(null);
   }
