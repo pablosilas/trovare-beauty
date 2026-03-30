@@ -15,7 +15,7 @@ export default function Barbeiros() {
   const fetchBarbers = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await api.get("/barbers");
+      const { data } = await api.get("/beauty/barbers");
       setBarbers(data);
     } catch (e) {
       console.error("Erro ao buscar barbeiros:", e);
@@ -43,9 +43,9 @@ export default function Barbeiros() {
     if (!form.name || !form.phone) return;
     try {
       if (selected) {
-        await api.put(`/barbers/${selected.id}`, form);
+        await api.put(`/beauty/barbers/${selected.id}`, form);
       } else {
-        await api.post("/barbers", form);
+        await api.post("/beauty/barbers", form);
       }
       await fetchBarbers();
       setShowModal(false);
@@ -56,7 +56,7 @@ export default function Barbeiros() {
 
   async function handleDelete(id) {
     try {
-      await api.delete(`/barbers/${id}`);
+      await api.delete(`/beauty/barbers/${id}`);
       await fetchBarbers();
     } catch (e) {
       console.error("Erro ao deletar barbeiro:", e);

@@ -29,11 +29,11 @@ export default function Dashboard() {
   const fetchAll = useCallback(async () => {
     try {
       const [b, c, bar, com, tr] = await Promise.all([
-        api.get("/bookings"),
-        api.get("/clients"),
-        api.get("/barbers"),
-        api.get("/commissions"),
-        api.get("/transactions"),
+        api.get("/beauty/bookings"),
+        api.get("/beauty/clients"),
+        api.get("/beauty/barbers"),
+        api.get("/beauty/commissions"),
+        api.get("/beauty/transactions"),
       ]);
       setBookings(b.data);
       setClients(c.data);

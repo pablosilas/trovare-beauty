@@ -22,7 +22,7 @@ export default function Clientes() {
   const fetchClients = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await api.get("/clients");
+      const { data } = await api.get("/beauty/clients");
       setClients(data);
     } catch (e) {
       console.error("Erro ao buscar clientes:", e);
@@ -50,9 +50,9 @@ export default function Clientes() {
     if (!form.name || !form.phone) return;
     try {
       if (selected) {
-        await api.put(`/clients/${selected.id}`, form);
+        await api.put(`/beauty/clients/${selected.id}`, form);
       } else {
-        await api.post("/clients", form);
+        await api.post("/beauty/clients", form);
       }
       await fetchClients();
       setShowModal(false);
@@ -63,7 +63,7 @@ export default function Clientes() {
 
   async function handleDelete(id) {
     try {
-      await api.delete(`/clients/${id}`);
+      await api.delete(`/beauty/clients/${id}`);
       await fetchClients();
     } catch (e) {
       console.error("Erro ao deletar cliente:", e);

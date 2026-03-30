@@ -38,9 +38,9 @@ export default function Agendamentos() {
     try {
       setLoading(true);
       const [b, c, bar] = await Promise.all([
-        api.get("/bookings"),
-        api.get("/clients"),
-        api.get("/barbers"),
+        api.get("/beauty/bookings"),
+        api.get("/beauty/clients"),
+        api.get("/beauty/barbers"),
       ]);
       setBookings(b.data);
       setClients(c.data);
@@ -63,7 +63,7 @@ export default function Agendamentos() {
   async function handleSubmit() {
     if (!form.clientId || !form.barberId || !form.service || !form.date || !form.time) return;
     try {
-      await api.post("/bookings", form);
+      await api.post("/beauty/bookings", form);
       await fetchAll();
       setForm(emptyForm);
       setShowModal(false);
@@ -74,7 +74,7 @@ export default function Agendamentos() {
 
   async function handleDelete(id) {
     try {
-      await api.delete(`/bookings/${id}`);
+      await api.delete(`/beauty/bookings/${id}`);
       await fetchAll();
     } catch (e) {
       console.error("Erro ao deletar agendamento:", e);
@@ -83,7 +83,7 @@ export default function Agendamentos() {
 
   async function handleStatusChange(id, status) {
     try {
-      await api.put(`/bookings/${id}`, { status });
+      await api.put(`/beauty/bookings/${id}`, { status });
       await fetchAll();
     } catch (e) {
       console.error("Erro ao atualizar status:", e);

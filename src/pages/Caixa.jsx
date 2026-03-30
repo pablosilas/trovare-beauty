@@ -29,8 +29,8 @@ export default function Caixa() {
     try {
       setLoading(true);
       const [t, b] = await Promise.all([
-        api.get("/transactions"),
-        api.get("/barbers"),
+        api.get("/beauty/transactions"),
+        api.get("/beauty/barbers"),
       ]);
       setTransactions(t.data);
       setBarbers(b.data);
@@ -47,7 +47,7 @@ export default function Caixa() {
   async function handleSubmit() {
     if (!form.description || !form.amount || !form.date) return;
     try {
-      await api.post("/transactions", form);
+      await api.post("/beauty/transactions", form);
       await fetchAll();
       setForm(emptyForm);
       setShowModal(false);
@@ -58,7 +58,7 @@ export default function Caixa() {
 
   async function handleDelete(id) {
     try {
-      await api.delete(`/transactions/${id}`);
+      await api.delete(`/beauty/transactions/${id}`);
       await fetchAll();
     } catch (e) {
       console.error("Erro ao deletar lançamento:", e);

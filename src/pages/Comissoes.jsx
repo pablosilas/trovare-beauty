@@ -13,7 +13,7 @@ export default function Comissoes() {
   const fetchCommissions = useCallback(async () => {
     try {
       setLoading(true);
-      const { data } = await api.get("/commissions");
+      const { data } = await api.get("/beauty/commissions");
       setCommissions(data);
     } catch (e) {
       console.error("Erro ao buscar comissões:", e);
@@ -27,7 +27,7 @@ export default function Comissoes() {
 
   async function togglePaid(id) {
     try {
-      await api.put(`/commissions/${id}`);
+      await api.put(`/beauty/commissions/${id}`);
       await fetchCommissions();
     } catch (e) {
       console.error("Erro ao atualizar comissão:", e);
@@ -37,7 +37,7 @@ export default function Comissoes() {
   async function markAllPaid(barberId) {
     try {
       const pending = commissions.filter(c => c.barberId === barberId && !c.paid);
-      await Promise.all(pending.map(c => api.put(`/commissions/${c.id}`)));
+      await Promise.all(pending.map(c => api.put(`/beauty/commissions/${c.id}`)));
       await fetchCommissions();
     } catch (e) {
       console.error("Erro ao pagar comissões:", e);
