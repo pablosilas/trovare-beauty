@@ -13,7 +13,7 @@ export default function Topbar({ onMenuClick }) {
   useEffect(() => {
     async function checkConnection() {
       try {
-        await fetch("http://localhost:3333/");
+        await fetch(import.meta.env.VITE_API_URL || "http://localhost:3333");
         setStatus("online");
         setLastUpdate(new Date());
       } catch {
