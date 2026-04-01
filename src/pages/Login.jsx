@@ -78,13 +78,10 @@ export default function Login() {
                 style={{ fontFamily: "'Space Mono', monospace", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                 Senha
               </label>
-              <input
-                type="password"
-                placeholder="••••••••"
+              <PasswordInput
                 value={form.password}
                 onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
                 className="t-input w-full text-sm px-4 py-3 rounded-xl"
-                required
               />
             </div>
 

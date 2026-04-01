@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import TrovareIcon from "../TrovareIcon.jsx";
+import { LayoutDashboard, Calendar, Users, Scissors, Banknote, TrendingUp, X } from "lucide-react";
 
 const navItems = [
-  { path: "/", label: "Dashboard", icon: "◈" },
-  { path: "/agendamentos", label: "Agendamentos", icon: "◷" },
-  { path: "/clientes", label: "Clientes", icon: "◎" },
-  { path: "/barbeiros", label: "Barbeiros", icon: "✦" },
-  { path: "/caixa", label: "Caixa", icon: "◆" },
-  { path: "/comissoes", label: "Comissões", icon: "◈" },
+  { path: "/", label: "Dashboard", icon: LayoutDashboard },
+  { path: "/agendamentos", label: "Agendamentos", icon: Calendar },
+  { path: "/clientes", label: "Clientes", icon: Users },
+  { path: "/barbeiros", label: "Barbeiros", icon: Scissors },
+  { path: "/caixa", label: "Caixa", icon: Banknote },
+  { path: "/comissoes", label: "Comissões", icon: TrendingUp },
 ];
 
 export default function Sidebar({ open, onClose }) {
@@ -56,7 +57,7 @@ export default function Sidebar({ open, onClose }) {
         </div>
         <button onClick={onClose}
           className="lg:hidden cursor-pointer t-muted hover:opacity-75 text-xl">
-          ✕
+          <X size={16} />
         </button>
       </div>
 
@@ -83,7 +84,7 @@ export default function Sidebar({ open, onClose }) {
               borderLeft: isActive ? "2px solid var(--gold)" : "2px solid transparent",
             })}
           >
-            <span style={{ fontSize: "14px" }}>{item.icon}</span>
+            <item.icon size={16} />
             {item.label}
           </NavLink>
         ))}

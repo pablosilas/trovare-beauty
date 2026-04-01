@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Menu } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext.jsx";
 
 export default function Topbar({ onMenuClick }) {
@@ -40,7 +41,7 @@ export default function Topbar({ onMenuClick }) {
       {/* Botão menu mobile */}
       <button onClick={onMenuClick}
         className="lg:hidden cursor-pointer t-muted hover:opacity-75 shrink-0 text-xl">
-        ☰
+        <Menu size={18} />
       </button>
 
       {/* Data */}

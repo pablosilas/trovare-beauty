@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Banknote, Calendar, Users, TrendingUp } from "lucide-react";
 import api from "../services/api.js";
 import { useAutoRefresh } from "../hooks/useAutoRefresh.js";
 
@@ -56,10 +57,10 @@ export default function Dashboard() {
   const todayBooks = bookings.filter(b => b.date === todayStr);
 
   const stats = [
-    { label: "Faturamento Total", value: `R$ ${income.toLocaleString("pt-BR")}`, sub: `${transactions.filter(t => t.type === "income").length} receitas`, color: "var(--gold)", icon: "◆" },
-    { label: "Agendamentos", value: bookings.length, sub: `${todayBooks.length} hoje`, color: "#4ade80", icon: "◷" },
-    { label: "Clientes", value: clients.length, sub: `${clients.filter(c => c.loyalty === "VIP").length} VIPs`, color: "#818cf8", icon: "◎" },
-    { label: "Comissões", value: `R$ ${totalComm.toFixed(0)}`, sub: `${commissions.filter(c => !c.paid).length} pendentes`, color: "#f472b6", icon: "✦" },
+    { label: "Faturamento Total", value: `R$ ${income.toLocaleString("pt-BR")}`, sub: `${transactions.filter(t => t.type === "income").length} receitas`, color: "var(--gold)", icon: Banknote },
+    { label: "Agendamentos", value: bookings.length, sub: `${todayBooks.length} hoje`, color: "#4ade80", icon: Calendar },
+    { label: "Clientes", value: clients.length, sub: `${clients.filter(c => c.loyalty === "VIP").length} VIPs`, color: "#818cf8", icon: Users },
+    { label: "Comissões", value: `R$ ${totalComm.toFixed(0)}`, sub: `${commissions.filter(c => !c.paid).length} pendentes`, color: "#f472b6", icon: TrendingUp },
   ];
 
   if (loading) {
@@ -79,7 +80,7 @@ export default function Dashboard() {
           <div key={i} className="t-card rounded-xl p-5">
             <div className="flex justify-between items-start mb-3">
               <span className="t-faint text-[11px] uppercase tracking-wider">{s.label}</span>
-              <span style={{ color: s.color }}>{s.icon}</span>
+              <s.icon size={16} style={{ color: s.color }} />
             </div>
             <div className="text-2xl font-bold mb-1" style={{ color: s.color }}>{s.value}</div>
             <div className="t-faint text-[11px]">{s.sub}</div>

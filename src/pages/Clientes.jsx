@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { X } from "lucide-react";
 import api from "../services/api.js";
 import { useAutoRefresh } from "../hooks/useAutoRefresh.js";
 
@@ -212,7 +213,7 @@ export default function Clientes() {
           <div className="t-modal rounded-xl p-6 w-full max-w-md">
             <div className="flex justify-between items-center mb-5">
               <h2 className="t-text text-sm font-semibold">{selected ? "Editar Cliente" : "Novo Cliente"}</h2>
-              <button onClick={() => setShowModal(false)} className="t-muted hover:opacity-75 cursor-pointer text-lg">✕</button>
+              <button onClick={() => setShowModal(false)} className="t-muted hover:opacity-75 cursor-pointer"><X size={16} /></button>
             </div>
             <div className="flex flex-col gap-3">
               <div>
